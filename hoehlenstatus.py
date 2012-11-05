@@ -45,5 +45,5 @@ for line in lines:
         print host_ip
         print mac
         print ""
-	conn.execute(INSERT_SQL, (mac, host_ip, host_hostname))
+    conn.execute(INSERT_SQL, (mac, host_ip, host_hostname))
 
