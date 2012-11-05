@@ -12,6 +12,14 @@
 from execute import execute
 e = execute('sudo nmap -sP 172.31.97.0/24')
 
+import sqlite3
+
+CREATE_SQL = """CREATE TABLE IF NOT EXISTS status(mac PRIMARY KEY, ip VARCHAR(128), hostname VARCHAR(128));"""
+INSERT_SQL = """INSERT INTO status (mac, ip, hostname) VALUES (?, ?, ?);"""
+
+conn = sqlite3.connect('example.db')
+conn.execute(CREATE_SQL)
+
 output = e.stdout
 
 lines = output.split('\n')
@@ -37,6 +45,5 @@ for line in lines:
         print host_ip
         print mac
         print ""
-
-
+	conn.execute(INSERT_SQL, (mac, host_ip, host_hostname))
 
