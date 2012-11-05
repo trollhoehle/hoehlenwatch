@@ -1,5 +1,14 @@
 #!/usr/bin/python2
 
+# sqlite> CREATE TABLE status(mac PRIMARY KEY,ip VARCHAR(128),hostname VARCHAR(128));
+# sqlite> .schema
+# CREATE TABLE status(mac PRIMARY KEY,ip VARCHAR(128),hostname VARCHAR(128));
+# sqlite> INSERT INTO status (mac,ip,hostname) VALUES ('zoranhatnenWIRKLICHkurzenpenis','127.0.0.1','zoranstollewindowskiste');
+# sqlite> select * from status;
+# zoranhatnenWIRKLICHkurzenpenis|127.0.0.1|zoranstollewindowskiste
+# sqlite> delete from status where mac = 'zoranhatnenWIRKLICHkurzenpenis';
+# sqlite> 
+
 from execute import execute
 e = execute('sudo nmap -sP 172.31.97.0/24')
 
