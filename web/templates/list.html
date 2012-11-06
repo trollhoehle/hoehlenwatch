@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <link href="/static/css/bootstrap.css" rel="stylesheet" />
+    </head>
+    <body>
+        <header class="hero-unit">
+            <h1>H&ouml;hlenwatch</h1>
+        </header>
+        <div class="container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>IP</th>
+                        <th>Mac</th>
+                        <th>Last Seen</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for status in stati %}
+                    <tr>
+                        <td>{{ status.ip }}</td>
+                        <td>{{ status.mac }}</td>
+                        <td>{{ status.last_seen }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </body>
+</html>
