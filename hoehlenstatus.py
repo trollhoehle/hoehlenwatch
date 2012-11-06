@@ -10,7 +10,7 @@
 # sqlite> 
 
 from execute import execute
-e = execute('sudo nmap -sP 172.31.97.0/24')
+e = execute('nmap -sP 172.31.97.0/24')
 
 import sqlite3
 
