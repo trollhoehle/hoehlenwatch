@@ -11,7 +11,7 @@
 from execute import execute
 
 print "Fetching results from nmap..."
-e = execute('nmap -sP 172.31.97.0/24')
+e = execute('sudo nmap -sP 172.31.97.0/24')
 print "nmap run done"
 
 import sqlite3
@@ -48,10 +48,11 @@ for line in lines:
         print host_ip
         print mac
         print ""
-        try:
-            conn.execute(INSERT_SQL, (mac, host_ip, host_hostname))
-        except sqlite3.IntegrityError:
-            # We already know this mac, so we update the last_seen timestamp
-            conn.execute(UPDATE_SQL, (mac,))
+        if not mac == "unknown_mac":
+            try:
+                conn.execute(INSERT_SQL, (mac, host_ip, host_hostname))
+            except sqlite3.IntegrityError:
+                # We already know this mac, so we update the last_seen timestamp
+                conn.execute(UPDATE_SQL, (mac,))
 conn.commit()
 
