@@ -43,12 +43,8 @@ for line in lines:
         mac = lines[linenum].split(' ')[2:][0]
         if not ":" in mac:
             mac = "unknown_mac"
-        print "--------------"
-        print host_hostname
-        print host_ip
-        print mac
-        print ""
         if not mac == "unknown_mac":
+            print "MAC: %s, HOSTNAME: %s, IP: %s" % (mac, host_hostname,host_ip)
             try:
                 conn.execute(INSERT_SQL, (mac, host_ip, host_hostname))
             except sqlite3.IntegrityError:
