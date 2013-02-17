@@ -1,3 +1,5 @@
 *.pyc
 status.db
+index.html
+run.sh
 

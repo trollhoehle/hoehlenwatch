@@ -18,7 +18,7 @@ import sqlite3
 
 CREATE_SQL = """CREATE TABLE IF NOT EXISTS status(mac PRIMARY KEY, ip VARCHAR(128), hostname VARCHAR(128), last_seen datetime);"""
 INSERT_SQL = """INSERT INTO status (mac, ip, hostname, last_seen) VALUES (?, ?, ?, datetime('now'));"""
-UPDATE_SQL = """UPDATE status SET last_seen=datetime('now', 'localtime') WHERE mac = ?;"""
+UPDATE_SQL = """UPDATE status SET last_seen=datetime('now') WHERE mac = ?;"""
 
 conn = sqlite3.connect('status.db')
 conn.execute(CREATE_SQL)
