@@ -2,4 +2,6 @@
 status.db
 index.html
 run.sh
+*.swp
+csvexample.py
 
