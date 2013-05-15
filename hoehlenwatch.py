@@ -34,7 +34,7 @@ for line in lines:
     linenum +=1
     if 'is up' in line:
         hostline_full = lines[linenum-2].replace('Nmap scan report for ','')
-	print hostline_full
+        print hostline_full
         if "(" in hostline_full:
             h = hostline_full.split(' ')
             host_hostname = h[0]
