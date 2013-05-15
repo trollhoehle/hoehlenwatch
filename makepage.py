@@ -16,6 +16,7 @@ datastructure = cursor.fetchall()
 # print html header
 print '''<html>
 <head></head>
+<body TEXT="#eee" LINK="#88d" VLINK="#99b" ALINK="#fff" BGCOLOR="#112">
 <table border=1>
 '''
 
