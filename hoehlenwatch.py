@@ -9,15 +9,18 @@
 # sqlite> INSERT INTO status (mac,ip,hostname) VALUES ('zoranhatnenWIRKLICHkurzenpenis','127.0.0.1','zoranstollewindowskiste');
 
 from execute import execute
+import sqlite3
+import datetime
+
+# datetime string in the format: 2013-05-15 21:21:44
+# time = str(datetime.datetime.now()).split('.')[0]
 
 print "Fetching results from nmap..."
 e = execute('nmap -sP 172.31.97.0/24')
 print "nmap run done"
 
-import sqlite3
-
 CREATE_SQL = """CREATE TABLE IF NOT EXISTS status(mac PRIMARY KEY, ip VARCHAR(128), hostname VARCHAR(128), last_seen datetime);"""
-INSERT_SQL = """INSERT INTO status (mac, ip, hostname, last_seen) VALUES (?, ?, ?, datetime('now'));"""
+INSERT_SQL = """INSERT INTO status (mac, ip, hostname, last_seen) VALUES (?, ?, ?, datetime('now', 'localtime'));"""
 UPDATE_SQL = """UPDATE status SET last_seen=datetime('now', 'localtime') WHERE mac = ?;"""
 
 conn = sqlite3.connect('status.db')
